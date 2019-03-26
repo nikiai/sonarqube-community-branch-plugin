@@ -86,13 +86,7 @@ public class CommunityBranch implements Branch {
         return pullRequestKey;
     }
 
-    // This method can be removed when removing support for all SonarQube versions before 7.6
     @Override
-    public String generateKey(ScannerReport.Component projectKey, ScannerReport.Component fileOrDirPath) {
-        return generateKey(projectKey.getKey(), null == fileOrDirPath ? null : fileOrDirPath.getPath());
-    }
-
-    //@Override for SonarQube 7.6
     public String generateKey(String projectKey, String fileOrDirPath) {
         String effectiveKey;
         if (null == fileOrDirPath) {
