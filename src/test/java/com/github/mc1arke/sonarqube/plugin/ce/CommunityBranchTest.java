@@ -46,7 +46,7 @@ public class CommunityBranchTest {
         ScannerReport.Component projectKey =
                 ScannerReport.Component.getDefaultInstance().toBuilder().setKey("projectKey").build();
 
-        assertEquals("projectKey", testCase.generateKey(projectKey, null));
+        assertEquals("projectKey", testCase.generateKey(projectKey.getKey(), null));
     }
 
     @Test
@@ -57,7 +57,7 @@ public class CommunityBranchTest {
                 ScannerReport.Component.getDefaultInstance().toBuilder().setKey("projectKey").build();
         ScannerReport.Component fileOrPath = ScannerReport.Component.getDefaultInstance();
 
-        assertEquals("projectKey", testCase.generateKey(projectKey, fileOrPath));
+        assertEquals("projectKey", testCase.generateKey(projectKey.getKey(), fileOrPath.getProjectRelativePath()));
     }
 
     @Test
@@ -67,9 +67,9 @@ public class CommunityBranchTest {
         ScannerReport.Component projectKey =
                 ScannerReport.Component.getDefaultInstance().toBuilder().setKey("projectKey").build();
         ScannerReport.Component fileOrPath =
-                ScannerReport.Component.getDefaultInstance().toBuilder().setPath("path").build();
+                ScannerReport.Component.getDefaultInstance().toBuilder().setProjectRelativePath("path").build();
 
-        assertEquals("projectKey:path", testCase.generateKey(projectKey, fileOrPath));
+        assertEquals("projectKey:path", testCase.generateKey(projectKey.getKey(), fileOrPath.getName()));
     }
 
     @Test
@@ -79,9 +79,9 @@ public class CommunityBranchTest {
         ScannerReport.Component projectKey =
                 ScannerReport.Component.getDefaultInstance().toBuilder().setKey("projectKey").build();
         ScannerReport.Component fileOrPath =
-                ScannerReport.Component.getDefaultInstance().toBuilder().setPath("path").build();
+                ScannerReport.Component.getDefaultInstance().toBuilder().setProjectRelativePath("path").build();
 
-        assertEquals("projectKey:path:PULL_REQUEST:pullRequestKey", testCase.generateKey(projectKey, fileOrPath));
+        assertEquals("projectKey:path:PULL_REQUEST:pullRequestKey", testCase.generateKey(projectKey.getKey(), fileOrPath.getProjectRelativePath()));
     }
 
     @Test
@@ -91,9 +91,9 @@ public class CommunityBranchTest {
         ScannerReport.Component projectKey =
                 ScannerReport.Component.getDefaultInstance().toBuilder().setKey("projectKey").build();
         ScannerReport.Component fileOrPath =
-                ScannerReport.Component.getDefaultInstance().toBuilder().setPath("path").build();
+                ScannerReport.Component.getDefaultInstance().toBuilder().setProjectRelativePath("path").build();
 
-        assertEquals("projectKey:path:BRANCH:name", testCase.generateKey(projectKey, fileOrPath));
+        assertEquals("projectKey:path:BRANCH:name", testCase.generateKey(projectKey.getKey(), fileOrPath.getProjectRelativePath()));
     }
 
 
