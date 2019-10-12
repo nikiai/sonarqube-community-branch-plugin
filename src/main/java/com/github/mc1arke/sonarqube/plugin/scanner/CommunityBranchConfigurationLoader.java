@@ -52,7 +52,7 @@ public class CommunityBranchConfigurationLoader implements BranchConfigurationLo
                           ScannerProperties.PULL_REQUEST_BASE));
 
     // This method can be removed when removing support for all SonarQube versions before 7.8
-    @Override
+//    @Override
     public BranchConfiguration load(Map<String, String> localSettings, Supplier<Map<String, String>> supplier,
                                     ProjectBranches projectBranches, ProjectPullRequests projectPullRequests) {
         if (projectBranches.isEmpty()) {
@@ -80,7 +80,8 @@ public class CommunityBranchConfigurationLoader implements BranchConfigurationLo
         return new DefaultBranchConfiguration();
     }
 
-    //@Override since SonarQube 7.9
+    @Override
+//    since SonarQube 7.9
     public BranchConfiguration load(Map<String, String> localSettings, ProjectBranches projectBranches,
                                     ProjectPullRequests pullRequests) {
         if (projectBranches.isEmpty()) {

@@ -23,6 +23,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.sonar.ce.task.projectanalysis.analysis.AnalysisMetadataHolderImpl;
+import org.sonar.core.platform.EditionProvider;
+import org.sonar.core.platform.PlatformEditionProvider;
 import org.sonar.db.DbClient;
 import org.sonar.db.component.BranchDao;
 import org.sonar.db.component.BranchDto;
@@ -62,7 +64,9 @@ public class CommunityBranchLoaderDelegateTest {
         ScannerReport.Metadata metadata = ScannerReport.Metadata.getDefaultInstance();
         DbClient dbClient = mock(DbClient.class);
         when(dbClient.branchDao()).thenReturn(branchDao);
-        AnalysisMetadataHolderImpl metadataHolder = new AnalysisMetadataHolderImpl();
+        EditionProvider[] providers = {new CommunityBranchEditionProvider()};
+        PlatformEditionProvider editionProvider = new PlatformEditionProvider(providers);
+        AnalysisMetadataHolderImpl metadataHolder = new AnalysisMetadataHolderImpl(editionProvider);
         metadataHolder.setProject(new Project("uuid", "key", "name", "description", new ArrayList<>()));
 
         expectedException.expect(IllegalStateException.class);
@@ -86,7 +90,9 @@ public class CommunityBranchLoaderDelegateTest {
         ScannerReport.Metadata metadata = ScannerReport.Metadata.getDefaultInstance();
         DbClient dbClient = mock(DbClient.class);
         when(dbClient.branchDao()).thenReturn(branchDao);
-        AnalysisMetadataHolderImpl metadataHolder = new AnalysisMetadataHolderImpl();
+        EditionProvider[] providers = {new CommunityBranchEditionProvider()};
+        PlatformEditionProvider editionProvider = new PlatformEditionProvider(providers);
+        AnalysisMetadataHolderImpl metadataHolder = new AnalysisMetadataHolderImpl(editionProvider);
         metadataHolder.setProject(new Project("uuid", "key", "name", "description", new ArrayList<>()));
 
         new CommunityBranchLoaderDelegate(dbClient, metadataHolder).load(metadata);
@@ -111,7 +117,9 @@ public class CommunityBranchLoaderDelegateTest {
 
         DbClient dbClient = mock(DbClient.class);
         when(dbClient.branchDao()).thenReturn(branchDao);
-        AnalysisMetadataHolderImpl metadataHolder = new AnalysisMetadataHolderImpl();
+        EditionProvider[] providers = {new CommunityBranchEditionProvider()};
+        PlatformEditionProvider editionProvider = new PlatformEditionProvider(providers);
+        AnalysisMetadataHolderImpl metadataHolder = new AnalysisMetadataHolderImpl(editionProvider);
         metadataHolder.setProject(new Project("uuid", "key", "name", "description", new ArrayList<>()));
 
 
@@ -139,7 +147,9 @@ public class CommunityBranchLoaderDelegateTest {
 
         DbClient dbClient = mock(DbClient.class);
         when(dbClient.branchDao()).thenReturn(branchDao);
-        AnalysisMetadataHolderImpl metadataHolder = new AnalysisMetadataHolderImpl();
+        EditionProvider[] providers = {new CommunityBranchEditionProvider()};
+        PlatformEditionProvider editionProvider = new PlatformEditionProvider(providers);
+        AnalysisMetadataHolderImpl metadataHolder = new AnalysisMetadataHolderImpl(editionProvider);
         metadataHolder.setProject(new Project("projectUuid", "key", "name", "description", new ArrayList<>()));
 
         new CommunityBranchLoaderDelegate(dbClient, metadataHolder).load(metadata);
@@ -172,7 +182,9 @@ public class CommunityBranchLoaderDelegateTest {
 
         DbClient dbClient = mock(DbClient.class);
         when(dbClient.branchDao()).thenReturn(branchDao);
-        AnalysisMetadataHolderImpl metadataHolder = new AnalysisMetadataHolderImpl();
+        EditionProvider[] providers = {new CommunityBranchEditionProvider()};
+        PlatformEditionProvider editionProvider = new PlatformEditionProvider(providers);
+        AnalysisMetadataHolderImpl metadataHolder = new AnalysisMetadataHolderImpl(editionProvider);
         metadataHolder.setProject(new Project("projectUuid", "key", "name", "description", new ArrayList<>()));
 
         new CommunityBranchLoaderDelegate(dbClient, metadataHolder).load(metadata);
@@ -205,7 +217,9 @@ public class CommunityBranchLoaderDelegateTest {
 
         DbClient dbClient = mock(DbClient.class);
         when(dbClient.branchDao()).thenReturn(branchDao);
-        AnalysisMetadataHolderImpl metadataHolder = new AnalysisMetadataHolderImpl();
+        EditionProvider[] providers = {new CommunityBranchEditionProvider()};
+        PlatformEditionProvider editionProvider = new PlatformEditionProvider(providers);
+        AnalysisMetadataHolderImpl metadataHolder = new AnalysisMetadataHolderImpl(editionProvider);
         metadataHolder.setProject(new Project("projectUuid", "key", "name", "description", new ArrayList<>()));
 
         new CommunityBranchLoaderDelegate(dbClient, metadataHolder).load(metadata);
@@ -231,7 +245,9 @@ public class CommunityBranchLoaderDelegateTest {
 
         DbClient dbClient = mock(DbClient.class);
         when(dbClient.branchDao()).thenReturn(branchDao);
-        AnalysisMetadataHolderImpl metadataHolder = new AnalysisMetadataHolderImpl();
+        EditionProvider[] providers = {new CommunityBranchEditionProvider()};
+        PlatformEditionProvider editionProvider = new PlatformEditionProvider(providers);
+        AnalysisMetadataHolderImpl metadataHolder = new AnalysisMetadataHolderImpl(editionProvider);
         metadataHolder.setProject(new Project("projectUuid", "key", "name", "description", new ArrayList<>()));
 
         expectedException.expect(IllegalStateException.class);
@@ -272,7 +288,9 @@ public class CommunityBranchLoaderDelegateTest {
 
         DbClient dbClient = mock(DbClient.class);
         when(dbClient.branchDao()).thenReturn(branchDao);
-        AnalysisMetadataHolderImpl metadataHolder = new AnalysisMetadataHolderImpl();
+        EditionProvider[] providers = {new CommunityBranchEditionProvider()};
+        PlatformEditionProvider editionProvider = new PlatformEditionProvider(providers);
+        AnalysisMetadataHolderImpl metadataHolder = new AnalysisMetadataHolderImpl(editionProvider);
         metadataHolder.setProject(new Project("projectUuid", "key", "name", "description", new ArrayList<>()));
 
         new CommunityBranchLoaderDelegate(dbClient, metadataHolder).load(metadata);
@@ -307,7 +325,9 @@ public class CommunityBranchLoaderDelegateTest {
 
         DbClient dbClient = mock(DbClient.class);
         when(dbClient.branchDao()).thenReturn(branchDao);
-        AnalysisMetadataHolderImpl metadataHolder = new AnalysisMetadataHolderImpl();
+        EditionProvider[] providers = {new CommunityBranchEditionProvider()};
+        PlatformEditionProvider editionProvider = new PlatformEditionProvider(providers);
+        AnalysisMetadataHolderImpl metadataHolder = new AnalysisMetadataHolderImpl(editionProvider);
         metadataHolder.setProject(new Project("projectUuid", "key", "name", "description", new ArrayList<>()));
 
 
