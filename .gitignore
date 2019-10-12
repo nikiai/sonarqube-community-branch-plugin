@@ -12,3 +12,4 @@
 
 #Project libs
 /sonarqube-lib/
+.scannerwork
