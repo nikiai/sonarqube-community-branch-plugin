@@ -1,5 +1,5 @@
 steps:
-  - name: 'newtmitch/sonar-scanner:latest'
+  - name: 'gcr.io/niki-ai/sonar-scanner:latest'
     args:
       - '-Dsonar.host.url=https://sonar.niki.ai'
       - '-Dsonar.login=9f62e107237cfbb8706bc9184fe77569c8be0807'
