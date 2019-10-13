@@ -39,7 +39,6 @@ import org.sonar.core.config.PurgeConstants;
  */
 public class CommunityBranchPlugin implements Plugin {
 
-    private static final String UNUSED = "ddd";
     private static final String PULL_REQUEST_CATEGORY_LABEL = "Pull Request";
     private static final String GITHUB_INTEGRATION_SUBCATEGORY_LABEL = "Integration With Github";
 
