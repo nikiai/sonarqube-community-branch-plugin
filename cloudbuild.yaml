@@ -1,4 +1,14 @@
 steps:
-- name: 'gradle'
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+    - 'build'
+    - '--build-arg=BASE_IMAGE=docker pull gcr.io/cloud-builders/javac:8'
+    - '--build-arg=GRADLE_VERSION=5.6.2'
+    - '--build-arg=SHA=32fce6628848f799b0ad3205ae8db67d0d828c10ffe62b748a7c0d9f4a5d9ee0'
+    - '--tag=gcr.io/niki-ai/gradle:5.6.2-jdk-8'
+    - '--tag=gcr.io/niki-ai/java/gradle:5.6.2-jdk-8'
+    - '.'
+  waitFor: ['-']
+- name: 'gcr.io/niki-ai/java/gradle:5.6.2-jdk-8'
   args: ['build','sonarqube']
 tags: ['cloud-builders-community']
