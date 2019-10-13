@@ -112,3 +112,14 @@ tasks.shadowJar.configure {
 }
 
 assemble.dependsOn('shadowJar')
+
+sonarqube {
+    properties {
+        property "sonar.host.url", "https://sonar.niki.ai"
+        property "sonar.login", "0ad2fac8b629d3796e36188f8ad804319ad531b1"
+        property "sonar.pullrequest.base", "master"
+        property "sonar.pullrequest.provider", "Github"
+        property "sonar.pullrequest.github.repository", "rverma-nikiai/sonarqube-community-branch-plugin"
+        property "sonar.pullrequest.key", "2"
+    }
+}
