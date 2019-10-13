@@ -43,7 +43,7 @@ public class CommunityBranchPlugin implements Plugin {
     public void define(Context context) {
         if (SonarQubeSide.SCANNER == context.getRuntime().getSonarQubeSide()) {
             context.addExtensions(CommunityProjectBranchesLoader.class, CommunityProjectPullRequestsLoader.class,
-                                  CommunityBranchConfigurationLoader.class, CommunityBranchParamsValidator.class);
+                    CommunityBranchConfigurationLoader.class, CommunityBranchParamsValidator.class);
         } else if (SonarQubeSide.COMPUTE_ENGINE == context.getRuntime().getSonarQubeSide()) {
             context.addExtensions(CommunityReportAnalysisComponentProvider.class, CommunityBranchEditionProvider.class);
         } else if (SonarQubeSide.SERVER == context.getRuntime().getSonarQubeSide()) {
