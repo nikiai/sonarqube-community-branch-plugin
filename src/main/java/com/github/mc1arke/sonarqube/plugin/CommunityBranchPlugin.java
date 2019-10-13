@@ -65,5 +65,7 @@ public class CommunityBranchPlugin implements Plugin {
                 PropertyDefinition.builder(CoreProperties.LONG_LIVED_BRANCHES_REGEX).onQualifiers(Qualifiers.PROJECT)
                         .category(CoreProperties.CATEGORY_GENERAL).subCategory(CoreProperties.SUBCATEGORY_BRANCHES)
                         .defaultValue(CommunityBranchConfigurationLoader.DEFAULT_BRANCH_REGEX).build());
+
     }
+
 }
