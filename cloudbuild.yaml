@@ -1,4 +1,6 @@
 steps:
+  - name: 'gcr.io/cloud-builders/gradle'
+    args: ['build']
   - name: 'gcr.io/niki-ai/sonar-scanner:latest'
     args:
       - '-Dsonar.pullrequest.branch=pr-decoration'
