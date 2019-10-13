@@ -108,8 +108,4 @@ public class CommunityBranch implements Branch {
         return targetBranchName;
     }
 
-    private String test() {
-        return "rand";
-    }
-
 }
