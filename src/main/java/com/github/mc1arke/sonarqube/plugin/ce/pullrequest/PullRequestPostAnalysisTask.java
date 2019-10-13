@@ -27,6 +27,7 @@ import org.sonar.ce.task.projectanalysis.component.ConfigurationRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class PullRequestPostAnalysisTask implements PostProjectAnalysisTask {
 
@@ -51,7 +52,7 @@ public class PullRequestPostAnalysisTask implements PostProjectAnalysisTask {
 
         Optional<PullRequestBuildStatusDecorator> optionalPullRequestDecorator =
                 findCurrentPullRequestStatusDecorator(configurationRepository.getConfiguration(),
-                                                      pullRequestDecorators);
+                        pullRequestDecorators);
 
         if (!optionalPullRequestDecorator.isPresent()) {
             LOGGER.info("No decorator found for this Pull Request");
@@ -67,6 +68,10 @@ public class PullRequestPostAnalysisTask implements PostProjectAnalysisTask {
             Configuration configuration, List<PullRequestBuildStatusDecorator> pullRequestDecorators) {
 
         Optional<String> optionalImplementationName = configuration.get("sonar.pullrequest.provider");
+        LOGGER.debug("registered decorators " + (
+                pullRequestDecorators.size() > 0 ?
+                        pullRequestDecorators.stream().map(PullRequestBuildStatusDecorator::name).collect(Collectors.joining(",")) :
+                        "None"));
 
         if (!optionalImplementationName.isPresent()) {
             LOGGER.debug("'sonar.pullrequest.provider' property not set");
