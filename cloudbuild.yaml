@@ -1,8 +1,6 @@
 steps:
   - name: 'gcr.io/niki-ai/sonar-scanner:latest'
     args:
-      - '-Dsonar.host.url=https://sonar.niki.ai'
-      - '-Dsonar.login=9f62e107237cfbb8706bc9184fe77569c8be0807'
       - '-Dsonar.pullrequest.branch=pr-decoration'
       - '-Dsonar.pullrequest.key=2'
 tags: ['cloud-builders-community']
