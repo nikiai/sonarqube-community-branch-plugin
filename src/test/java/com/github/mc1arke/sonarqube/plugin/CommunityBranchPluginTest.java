@@ -83,8 +83,8 @@ public class CommunityBranchPluginTest {
 
         testCase.define(context);
 
-        ArgumentCaptor<Object> argumentCaptor = ArgumentCaptor.forClass(Object.class);
-        verify(context, times(2)).addExtensions(argumentCaptor.capture(), argumentCaptor.capture());
+        ArgumentCaptor<Class> argumentCaptor = ArgumentCaptor.forClass(Class.class);
+        verify(context, times(1)).addExtensions(argumentCaptor.capture(), argumentCaptor.capture());
 
 
         assertEquals(
@@ -123,6 +123,21 @@ public class CommunityBranchPluginTest {
         verify(context).addExtensions(argumentCaptor.capture(), argumentCaptor.capture(), argumentCaptor.capture());
 
 
-        assertEquals(2, argumentCaptor.getAllValues().size());
+        assertEquals(8, argumentCaptor.getAllValues().size());
+    }
+
+    @Test
+    public void testDefineDecorator() {
+        CommunityBranchPlugin testCase = new CommunityBranchPlugin();
+
+        Plugin.Context context = spy(mock(Plugin.Context.class, Mockito.RETURNS_DEEP_STUBS));
+
+        testCase.define(context);
+
+        ArgumentCaptor<Object> argumentCaptor = ArgumentCaptor.forClass(Object.class);
+        verify(context).addExtensions(argumentCaptor.capture(), argumentCaptor.capture(), argumentCaptor.capture());
+
+
+        assertEquals(8, argumentCaptor.getAllValues().size());
     }
 }

@@ -16,23 +16,26 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-package com.github.mc1arke.sonarqube.plugin.ce;
+package com.github.mc1arke.sonarqube.plugin.ce.pullrequest;
 
-import org.junit.Test;
+import org.sonar.ce.task.projectanalysis.component.Component;
+import org.sonar.ce.task.projectanalysis.issue.IssueVisitor;
+import org.sonar.core.issue.DefaultIssue;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+public class PostAnalysisIssueVisitor extends IssueVisitor {
 
-/**
- * @author Michael Clarke
- */
-public class CommunityReportAnalysisComponentProviderTest {
+    private final List<DefaultIssue> collectedIssues = new ArrayList<>();
 
-    @Test
-    public void testGetComponents() {
-        List<Object> result = new CommunityReportAnalysisComponentProvider().getComponents();
-        assertEquals(4, result.size());
-        assertEquals(CommunityBranchLoaderDelegate.class, result.get(0));
+    @Override
+    public void onIssue(Component component, DefaultIssue defaultIssue) {
+        collectedIssues.add(defaultIssue);
+    }
+
+    public List<DefaultIssue> getIssues() {
+        return Collections.unmodifiableList(collectedIssues);
     }
 }
